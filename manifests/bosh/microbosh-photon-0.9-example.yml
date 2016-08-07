@@ -3,18 +3,18 @@ name: bosh
 
 releases:
 - name: bosh
-  url: http://bosh.io/d/github.com/cloudfoundry/bosh?v=228
-  sha1: a117cbba739048de63859b5f9bba3488003bbed9
+  url: https://bosh.io/d/github.com/cloudfoundry/bosh?v=250
+  sha1: 11b318d4ec9f0baf75d8afc6f78cf66f955d459f
 - name: bosh-photon-cpi
   version: latest
-  url: file:////tmp/bosh-photon-cpi-0.9.0.tgz
+  url: file:////home/ray/photon/bosh-photon-cpi-release/dev_releases/bosh-photon-cpi/bosh-photon-cpi-0.9.0+dev.1.tgz
 
 resource_pools:
 - name: vms
   network: default
   stemcell:
-    url: https://d26ekeud912fhb.cloudfront.net/bosh-stemcell/vsphere/bosh-stemcell-3177-vsphere-esxi-ubuntu-trusty-go_agent.tgz
-    sha1: c81a8638d715ba333c6271ec402937899432ca1b
+    url: file:////home/ray/photon/deploy-photon/bosh-stemcell-3177-vsphere-esxi-ubuntu-trusty-go_agent.tgz
+    md5: 407e55fec37d1ef6a4b8e052c7da855e
   cloud_properties:
     vm_flavor: core-200
     disk_flavor: core-200
@@ -29,11 +29,11 @@ networks:
 - name: default
   type: manual
   subnets:
-  - range: 10.65.170.0/23
-    gateway: 10.65.170.1
-    dns: [10.65.162.2]
+  - range: 10.162.35.0/19
+    gateway: 10.162.63.253
+    dns: [10.162.204.1]
     cloud_properties:
-      network_id: 623a567a-85e4-48a0-b2a8-9ef36b2e9094
+      network_id: 46bdadf6-3ec7-4585-b334-bec911378689
 
 jobs:
 - name: bosh
@@ -41,7 +41,7 @@ jobs:
 
   networks:
   - name: default
-    static_ips: [10.65.170.10]
+    static_ips: [10.162.35.199]
 
   templates:
   - name: nats
@@ -65,7 +65,7 @@ jobs:
   persistent_disk_pool: disks
 
   properties:
-    ntp: &ntp [10.65.162.2]
+    ntp: &ntp [ntp1.eng.vmware.com]
 
     nats:
       user: nats
@@ -74,13 +74,13 @@ jobs:
       port: 4222
 
     blobstore:
-      address: 10.65.170.10
+      address: 10.162.35.199
       port: 25250
       provider: dav
       director: {user: director, password: director-password}
       agent: {user: agent, password: agent-password}
       options:
-        endpoint: http://10.65.170.10:25250
+        endpoint: http://10.162.35.199:25250
         user: agent
         password: agent-password
 
@@ -108,7 +108,7 @@ jobs:
       director_account: {user: admin, password: admin}
       resurrector_enabled: true
 
-    agent: {mbus: "nats://nats:nats-password@10.65.170.10:4222"}
+    agent: {mbus: "nats://nats:nats-password@10.162.35.199:4222"}
 
     dns:
       address: 127.0.0.1
@@ -116,14 +116,13 @@ jobs:
 
     # photon job template
     photon: &photon
-      target: http://10.65.170.11:9000
+      target: http://10.162.35.37:9000
       tenant: pcf-tenant
-      project: ea205f3a-d697-4292-b696-4b503bffd4a8
-      token: eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJwaC1hZG1pbkBlc3hjbG91ZCIsImF1ZCI6WyJwaC1hZG1pbkBlc3hjbG91ZCIsInJzX2VzeGNsb3VkIl0sInNjb3BlIjoib3BlbmlkIG9mZmxpbmVfYWNjZXNzIGF0X2dyb3VwcyByc19lc3hjbG91ZCIsImlzcyI6Imh0dHBzOlwvXC8xMC4xNDYuMTcuMjFcL29wZW5pZGNvbm5lY3RcL2VzeGNsb3VkIiwiZ3JvdXBzIjpbImVzeGNsb3VkXFxzZzEiLCJlc3hjbG91ZFxcRXZlcnlvbmUiXSwidG9rZW5fY2xhc3MiOiJhY2Nlc3NfdG9rZW4iLCJ0b2tlbl90eXBlIjoiQmVhcmVyIiwiZXhwIjoxNDQ1NDA5OTYxLCJpYXQiOjE0NDQ2ODk5NjEsInRlbmFudCI6ImVzeGNsb3VkIiwianRpIjoiNjg0cU5RYUxPNFdLckhlRnBGTjhld2JOYzBEeFZfMnFGUEU3aXJ4cGp2ZyJ9.Sc085J53yECsvRCXLrDTTmeIeDwog6AEaGb6euSudOeKZ3R9V7Tc6EpRoe311zCz-6NzklaW1rOl0dszmd4ArHYp1Bikkwx71i2HEZzpbhQDx7cl_94itHdDwTUfUUo184jbx6_lzxTQDof0ueVMyYOHZIYyN7uLbHRO3nSO4fT-NzpBEvRGhSF_eKryO_UJQJxfhIu-PkhN515j6T8OuzVkxTP-AzjY2_bA6KLGbSVZWu5QDkihBLbJUOcIRUUE04pi_abid1KORFlSqQskFJze7ncUijOm62_Vv9CBvqLwUcGXwYpklx2M6nIID-L7E9dskp4b08dZf9pcfWTt7srUv204jYvapwsXKpy8TjS5iwBxnPHOdmJwcZ0suc_y7e64w-OjiZxhXj4CxFSAwUghS54yhZ26DN8tDY0skuhYRrllY-0hrMWamMHLWeGHKOwqvNuQNQC9UlQCkY_ZAVofQeTf7qovUnOFX7q8iB-hT3DpC4qay6Fd1huq0M2afhoFzEgzG5rSSf9mi4TGGntQXf34zll4y5PdFFhh8abuA1nst2Y-rfInKUXeam5gg-4Xx7OkLf0zgrR5lwh405QVG8ZhDKDccC4_8PzvTmBX1Z-vwc6b09cRAMXm7kS7ybEQpBvAV51c7Q3BwE7ZlWPcC0wAP3KWFkxj4W92P9U
+      project: e4fde0de-7e95-4fdf-9a49-e375646c3419
 
 cloud_provider:
   template: {name: cpi, release: bosh-photon-cpi}
-  mbus: "https://mbus:mbus-password@10.65.170.10:6868"
+  mbus: "https://mbus:mbus-password@10.162.35.199:6868"
 
   properties:
     agent: {mbus: "https://mbus:mbus-password@0.0.0.0:6868"}
