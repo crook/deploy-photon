@@ -1,6 +1,6 @@
 ---
 name: cf-photon
-director_uuid: ignore
+director_uuid: dede676d-e121-42f8-af2a-ed5e075fd7e1
 releases:
 - name: cf-mysql
   version: '25.2'
@@ -9,42 +9,42 @@ releases:
 - name: service-backup
   version: '1'
 - name: cf
-  version: '235'
+  version: '235.5.50'
 - name: cflinuxfs2-rootfs
-  version: 0.2.0
+  version: 1.17.0
 - name: diego
-  version: 0.1467.0
+  version: 0.1467.25
 - name: garden-linux
-  version: 0.337.0
+  version: 0.338.0
 - name: etcd
-  version: '45'
+  version: '48'
 - name: push-apps-manager-release
-  version: '621'
+  version: '629.4'
 - name: notifications
-  version: '19'
+  version: '24'
 - name: notifications-ui
-  version: '10'
+  version: '17'
 - name: cf-autoscaling
-  version: '28'
+  version: '34'
 networks:
 - name: net-9771d1c767187fc21618
   subnets:
-  - range: 10.146.56.0/21
-    gateway: 10.146.63.253
+  - range: 10.162.35.0/19
+    gateway: 10.162.63.253
     dns:
-    - 10.146.63.249
+    - 10.162.204.1
     static:
-    - 10.146.63.131-10.146.63.180
+    - 10.162.35.170-10.162.35.190
+    - 10.162.35.191-10.162.35.198
     reserved:
-    - 10.146.56.1-10.146.63.130
-    - 10.146.63.231-10.146.63.239
+    - 10.162.35.200-10.162.35.210
     cloud_properties:
-      network_id: replace_network_id
+      network_id: 46bdadf6-3ec7-4585-b334-bec911378689
 resource_pools:
 - name: consul_server-partition
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -56,7 +56,7 @@ resource_pools:
 - name: nats-partition
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -68,7 +68,7 @@ resource_pools:
 - name: etcd_server-partition
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -80,7 +80,7 @@ resource_pools:
 - name: diego_database-partition
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -92,7 +92,7 @@ resource_pools:
 - name: nfs_server-partition
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -104,7 +104,7 @@ resource_pools:
 - name: router-partition
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -116,7 +116,7 @@ resource_pools:
 - name: mysql_proxy-partition
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -128,7 +128,7 @@ resource_pools:
 - name: mysql-partition
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-220
@@ -140,7 +140,7 @@ resource_pools:
 - name: backup-prepare-partition
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-100
@@ -152,7 +152,7 @@ resource_pools:
 - name: ccdb-partition
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-220
@@ -164,7 +164,7 @@ resource_pools:
 - name: uaadb-partition
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-220
@@ -176,7 +176,7 @@ resource_pools:
 - name: consoledb-partition
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-220
@@ -188,7 +188,7 @@ resource_pools:
 - name: cloud_controller-partition
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -200,7 +200,7 @@ resource_pools:
 - name: ha_proxy-partition
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -212,7 +212,7 @@ resource_pools:
 - name: clock_global-partition
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -224,7 +224,7 @@ resource_pools:
 - name: cloud_controller_worker-partition
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -236,7 +236,7 @@ resource_pools:
 - name: collector-partition
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -248,7 +248,7 @@ resource_pools:
 - name: uaa-partition
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -260,7 +260,7 @@ resource_pools:
 - name: diego_brain-partition
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -272,10 +272,10 @@ resource_pools:
 - name: diego_cell-partition
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
-    vm_flavor: core-245
+    vm_flavor: core-240
     disk_flavor: core-200
     vm_attached_disk_size_gb: 128
   env:
@@ -284,7 +284,7 @@ resource_pools:
 - name: doppler-partition
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -296,7 +296,7 @@ resource_pools:
 - name: loggregator_trafficcontroller-partition
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -308,7 +308,7 @@ resource_pools:
 - name: push-apps-manager
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-100
@@ -320,7 +320,7 @@ resource_pools:
 - name: smoke-tests
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -332,7 +332,7 @@ resource_pools:
 - name: notifications
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -344,7 +344,7 @@ resource_pools:
 - name: notifications-tests
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -356,7 +356,7 @@ resource_pools:
 - name: notifications-ui
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -368,7 +368,7 @@ resource_pools:
 - name: notifications-ui-tests
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -380,7 +380,7 @@ resource_pools:
 - name: autoscaling
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -392,7 +392,7 @@ resource_pools:
 - name: autoscaling-register-broker
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -404,7 +404,7 @@ resource_pools:
 - name: autoscaling-destroy-broker
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -416,7 +416,7 @@ resource_pools:
 - name: autoscaling-tests
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -428,7 +428,7 @@ resource_pools:
 - name: acceptance-tests
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -440,7 +440,7 @@ resource_pools:
 - name: acceptance-tests-internetless
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -452,7 +452,7 @@ resource_pools:
 - name: bootstrap
   stemcell:
     name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
-    version: 3215
+    version: 3232.12
   network: net-9771d1c767187fc21618
   cloud_properties:
     vm_flavor: core-200
@@ -492,10 +492,10 @@ jobs:
     - dns
     - gateway
     static_ips:
-    - 10.146.63.131
+    - 10.162.35.171
   properties:
     syslog_daemon_config:
-      address: 10.146.63.130
+      address: 10.162.35.170
       port: 514
       transport: udp
     metron_agent:
@@ -508,11 +508,11 @@ jobs:
       password: fd38f77b987c75d625fe
       port: 4222
       machines:
-      - 10.146.63.141
+      - 10.162.35.172
     loggregator:
       etcd:
         machines:
-        - 10.146.63.134
+        - 10.162.35.174
     consul:
       encrypt_keys:
       - c9074521ca485d54d545
@@ -639,7 +639,7 @@ jobs:
         mode: server
         servers:
           lan:
-          - 10.146.63.131
+          - 10.162.35.171
   update:
     max_in_flight: 1
     serial: true
@@ -659,17 +659,17 @@ jobs:
     - dns
     - gateway
     static_ips:
-    - 10.146.63.141
+    - 10.162.35.172
   properties:
     nats:
       user: nats
       password: fd38f77b987c75d625fe
-      address: 10.146.63.141
+      address: 10.162.35.172
       machines:
-      - 10.146.63.141
+      - 10.162.35.172
       port: 4222
     syslog_daemon_config:
-      address: 10.146.63.130
+      address: 10.162.35.170
       port: 514
       transport: udp
     metron_agent:
@@ -680,7 +680,7 @@ jobs:
     loggregator:
       etcd:
         machines:
-        - 10.146.63.134
+        - 10.162.35.174
   update:
     max_in_flight: 1
 - name: etcd_server-partition
@@ -700,10 +700,10 @@ jobs:
     - dns
     - gateway
     static_ips:
-    - 10.146.63.134
+    - 10.162.35.174
   properties:
     syslog_daemon_config:
-      address: 10.146.63.130
+      address: 10.162.35.170
       port: 514
       transport: udp
     metron_agent:
@@ -716,22 +716,22 @@ jobs:
       password: fd38f77b987c75d625fe
       port: 4222
       machines:
-      - 10.146.63.141
+      - 10.162.35.172
     etcd:
       machines:
-      - 10.146.63.134
+      - 10.162.35.174
       peer_require_ssl: false
       require_ssl: false
     loggregator:
       etcd:
         machines:
-        - 10.146.63.134
+        - 10.162.35.174
     etcd_metrics_server:
       nats:
         username: nats
         password: fd38f77b987c75d625fe
         machines:
-        - 10.146.63.141
+        - 10.162.35.172
   update:
     max_in_flight: 1
   persistent_disk_pool: etcd_server-partition
@@ -754,7 +754,7 @@ jobs:
     - dns
     - gateway
     static_ips:
-    - 10.146.63.144
+    - 10.162.35.176
   properties:
     etcd:
       advertise_urls_dns_suffix: etcd.service.cf.internal
@@ -1398,7 +1398,7 @@ jobs:
         domain: cf.internal
         servers:
           lan:
-          - 10.146.63.131
+          - 10.162.35.171
         services:
           etcd: {}
     nats:
@@ -1406,9 +1406,9 @@ jobs:
       password: fd38f77b987c75d625fe
       port: 4222
       machines:
-      - 10.146.63.141
+      - 10.162.35.172
     syslog_daemon_config:
-      address: 10.146.63.130
+      address: 10.162.35.170
       port: 514
       transport: udp
     metron_agent:
@@ -1419,7 +1419,7 @@ jobs:
     loggregator:
       etcd:
         machines:
-        - 10.146.63.134
+        - 10.162.35.174
   update:
     max_in_flight: 1
     serial: true
@@ -1439,13 +1439,13 @@ jobs:
     - dns
     - gateway
     static_ips:
-    - 10.146.63.147
+    - 10.162.35.178
   properties:
     nfs_server:
       allow_from_entries:
-      - 10.146.56.0/21
+      - 10.162.35.0/19
     syslog_daemon_config:
-      address: 10.146.63.130
+      address: 10.162.35.170
       port: 514
       transport: udp
     metron_agent:
@@ -1458,11 +1458,11 @@ jobs:
       password: fd38f77b987c75d625fe
       port: 4222
       machines:
-      - 10.146.63.141
+      - 10.162.35.172
     loggregator:
       etcd:
         machines:
-        - 10.146.63.134
+        - 10.162.35.174
   update:
     max_in_flight: 1
   persistent_disk_pool: nfs_server-partition
@@ -1481,7 +1481,7 @@ jobs:
     - dns
     - gateway
     static_ips:
-    - 10.146.63.151
+    - 10.162.35.180
   properties:
     request_timeout_in_seconds: 900
     networks:
@@ -1501,9 +1501,9 @@ jobs:
       password: fd38f77b987c75d625fe
       port: 4222
       machines:
-      - 10.146.63.141
+      - 10.162.35.172
     syslog_daemon_config:
-      address: 10.146.63.130
+      address: 10.162.35.170
       port: 514
       transport: udp
     metron_agent:
@@ -1514,7 +1514,7 @@ jobs:
     loggregator:
       etcd:
         machines:
-        - 10.146.63.134
+        - 10.162.35.174
     uaa:
       ssl:
         port: -1
@@ -1536,7 +1536,7 @@ jobs:
     - dns
     - gateway
     static_ips:
-    - 10.146.63.157
+    - 10.162.35.181
   properties:
     network_name: net-9771d1c767187fc21618
     external_host: p-mysql.internal.pcf.vmware.com
@@ -1544,17 +1544,17 @@ jobs:
       api_password: a139cd6ef895fb96a5ed
       api_username: admin
       proxy_ips:
-      - 10.146.63.157
+      - 10.162.35.181
     cluster_ips:
-    - 10.146.63.160
+    - 10.162.35.183
     nats:
       user: nats
       password: fd38f77b987c75d625fe
       machines:
-      - 10.146.63.141
+      - 10.162.35.172
       port: 4222
     syslog_aggregator:
-      address: 10.146.63.130
+      address: 10.162.35.170
       port: 514
       transport: udp
   update:
@@ -1574,12 +1574,12 @@ jobs:
     - dns
     - gateway
     static_ips:
-    - 10.146.63.160
+    - 10.162.35.183
   properties:
     roadmin_enabled: false
     admin_password: c76a3738e4a8c69270ce
     cluster_ips:
-    - 10.146.63.160
+    - 10.162.35.183
     database_startup_timeout: 1200
     innodb_buffer_pool_size: 2147483648
     max_connections: 1500
@@ -1607,7 +1607,7 @@ jobs:
       username: c4bbc5205056a465d7c4
       password: e9515285683f22ff81ba
     syslog_aggregator:
-      address: 10.146.63.130
+      address: 10.162.35.170
       port: 514
       transport: udp
     mysql-backup:
@@ -1653,10 +1653,10 @@ jobs:
     - dns
     - gateway
     static_ips:
-    - 10.146.63.171
+    - 10.162.35.184
   properties:
     databases:
-      address: 10.146.63.171
+      address: 10.162.35.184
       port: 2544
       db_scheme: postgres
       roles:
@@ -1668,7 +1668,7 @@ jobs:
         name: ccdb
         citext: true
     syslog_daemon_config:
-      address: 10.146.63.130
+      address: 10.162.35.170
       port: 514
       transport: udp
     metron_agent:
@@ -1681,11 +1681,11 @@ jobs:
       password: fd38f77b987c75d625fe
       port: 4222
       machines:
-      - 10.146.63.141
+      - 10.162.35.172
     loggregator:
       etcd:
         machines:
-        - 10.146.63.134
+        - 10.162.35.174
   update:
     max_in_flight: 1
   persistent_disk_pool: ccdb-partition
@@ -1704,10 +1704,10 @@ jobs:
     - dns
     - gateway
     static_ips:
-    - 10.146.63.174
+    - 10.162.35.188
   properties:
     databases:
-      address: 10.146.63.174
+      address: 10.162.35.188
       port: 2544
       db_scheme: postgresql
       roles:
@@ -1720,7 +1720,7 @@ jobs:
     networks:
       services: default
     syslog_daemon_config:
-      address: 10.146.63.130
+      address: 10.162.35.170
       port: 514
       transport: udp
     metron_agent:
@@ -1733,11 +1733,11 @@ jobs:
       password: fd38f77b987c75d625fe
       port: 4222
       machines:
-      - 10.146.63.141
+      - 10.162.35.172
     loggregator:
       etcd:
         machines:
-        - 10.146.63.134
+        - 10.162.35.174
   update:
     max_in_flight: 1
   persistent_disk_pool: uaadb-partition
@@ -1756,10 +1756,10 @@ jobs:
     - dns
     - gateway
     static_ips:
-    - 10.146.63.177
+    - 10.162.35.191
   properties:
     databases:
-      address: 10.146.63.177
+      address: 10.162.35.191
       port: 2544
       db_scheme: postgresql
       roles:
@@ -1772,7 +1772,7 @@ jobs:
     networks:
       services: default
     syslog_daemon_config:
-      address: 10.146.63.130
+      address: 10.162.35.170
       port: 514
       transport: udp
     metron_agent:
@@ -1785,11 +1785,11 @@ jobs:
       password: fd38f77b987c75d625fe
       port: 4222
       machines:
-      - 10.146.63.141
+      - 10.162.35.172
     loggregator:
       etcd:
         machines:
-        - 10.146.63.134
+        - 10.162.35.174
   update:
     max_in_flight: 1
   persistent_disk_pool: consoledb-partition
@@ -1852,7 +1852,7 @@ jobs:
         password: fd38f77b987c75d625fe
         port: 4222
         machines:
-        - 10.146.63.141
+        - 10.162.35.172
     cc:
       allowed_cors_domains:
       - https://apm.pcf.vmware.com
@@ -1943,7 +1943,7 @@ jobs:
       min_cli_version: 6.7.0
       min_recommended_cli_version: 6.11.2
     ccdb:
-      address: 10.146.63.171
+      address: 10.162.35.184
       port: 2544
       db_scheme: postgres
       roles:
@@ -2081,9 +2081,9 @@ jobs:
           cloud_controller_ng: {}
         servers:
           lan:
-          - 10.146.63.131
+          - 10.162.35.171
     nfs_server:
-      address: 10.146.63.147
+      address: 10.162.35.178
     uaa:
       url: https://uaa.pcf.vmware.com
       jwt:
@@ -2118,9 +2118,9 @@ jobs:
       password: fd38f77b987c75d625fe
       port: 4222
       machines:
-      - 10.146.63.141
+      - 10.162.35.172
     syslog_daemon_config:
-      address: 10.146.63.130
+      address: 10.162.35.170
       port: 514
       transport: udp
     metron_agent:
@@ -2131,7 +2131,7 @@ jobs:
     loggregator:
       etcd:
         machines:
-        - 10.146.63.134
+        - 10.162.35.174
     router:
       route_services_secret: da2dcee4c025b0b92617
   update:
@@ -2154,7 +2154,7 @@ jobs:
     - dns
     - gateway
     static_ips:
-      - 10.146.63.140
+      - 10.162.35.185
   properties:
     ha_proxy:
       disable_http: false
@@ -2165,7 +2165,7 @@ jobs:
     router:
       servers:
         z1:
-        - 10.146.63.151
+        - 10.162.35.180
         z2: []
     cc:
       allow_app_ssh_access: true
@@ -2185,11 +2185,11 @@ jobs:
       password: e81c1395983401b0757b
       port: 4222
       machines:
-      - 10.146.63.141
+      - 10.162.35.172
     loggregator:
       etcd:
         machines:
-        - 10.146.63.134
+        - 10.162.35.174
     consul:
       encrypt_keys:
       - c9074521ca485d54d545
@@ -2317,7 +2317,7 @@ jobs:
           cloud_controller_ng: {}
         servers:
           lan:
-          - 10.146.63.131
+          - 10.162.35.171
   update:
     max_in_flight: 1
 - name: clock_global-partition
@@ -2395,7 +2395,7 @@ jobs:
       default_staging_security_groups:
       - all_open
     ccdb:
-      address: 10.146.63.171
+      address: 10.162.35.184
       port: 2544
       db_scheme: postgres
       roles:
@@ -2554,9 +2554,9 @@ jobs:
       password: fd38f77b987c75d625fe
       port: 4222
       machines:
-      - 10.146.63.141
+      - 10.162.35.172
     syslog_daemon_config:
-      address: 10.146.63.130
+      address: 10.162.35.170
       port: 514
       transport: udp
     metron_agent:
@@ -2567,7 +2567,7 @@ jobs:
     loggregator:
       etcd:
         machines:
-        - 10.146.63.134
+        - 10.162.35.174
   update:
     max_in_flight: 1
 - name: cloud_controller_worker-partition
@@ -2649,7 +2649,7 @@ jobs:
       default_staging_security_groups:
       - all_open
     ccdb:
-      address: 10.146.63.171
+      address: 10.162.35.184
       port: 2544
       db_scheme: postgres
       roles:
@@ -2785,9 +2785,9 @@ jobs:
         domain: cf.internal
         servers:
           lan:
-          - 10.146.63.131
+          - 10.162.35.171
     nfs_server:
-      address: 10.146.63.147
+      address: 10.162.35.178
     uaa:
       url: https://uaa.pcf.vmware.com
       jwt:
@@ -2815,9 +2815,9 @@ jobs:
       password: fd38f77b987c75d625fe
       port: 4222
       machines:
-      - 10.146.63.141
+      - 10.162.35.172
     syslog_daemon_config:
-      address: 10.146.63.130
+      address: 10.162.35.170
       port: 514
       transport: udp
     metron_agent:
@@ -2828,7 +2828,7 @@ jobs:
     loggregator:
       etcd:
         machines:
-        - 10.146.63.134
+        - 10.162.35.174
   update:
     max_in_flight: 1
 - name: collector-partition
@@ -2994,7 +2994,7 @@ jobs:
         domain: cf.internal
         servers:
           lan:
-          - 10.146.63.131
+          - 10.162.35.171
         services:
           uaa: {}
     login:
@@ -3157,7 +3157,7 @@ jobs:
         client_secret: e0789d9433838b7d3449
       proxy:
         servers:
-        - 10.146.63.151
+        - 10.162.35.180
       clients:
         opentsdb-firehose-nozzle:
           access-token-validity: 1209600
@@ -3312,7 +3312,7 @@ jobs:
         - system_services|admin|cloud_controller.admin
         - system_verification|admin|scim.write,scim.read,openid,cloud_controller.admin,dashboard.user,console.admin,console.support
     ccdb:
-      address: 10.146.63.171
+      address: 10.162.35.184
       port: 2544
       db_scheme: postgres
       roles:
@@ -3325,7 +3325,7 @@ jobs:
         citext: true
     domain: pcf.vmware.com
     uaadb:
-      address: 10.146.63.174
+      address: 10.162.35.188
       port: 2544
       db_scheme: postgresql
       roles:
@@ -3340,9 +3340,9 @@ jobs:
       password: fd38f77b987c75d625fe
       port: 4222
       machines:
-      - 10.146.63.141
+      - 10.162.35.172
     syslog_daemon_config:
-      address: 10.146.63.130
+      address: 10.162.35.170
       port: 514
       transport: udp
     metron_agent:
@@ -3353,7 +3353,7 @@ jobs:
     loggregator:
       etcd:
         machines:
-        - 10.146.63.134
+        - 10.162.35.174
     route_registrar:
       routes:
       - name: uaa
@@ -3402,7 +3402,7 @@ jobs:
     - dns
     - gateway
     static_ips:
-    - 10.146.63.139
+    - 10.162.35.186
   properties:
     diego:
       auctioneer:
@@ -3916,7 +3916,7 @@ jobs:
           password: fd38f77b987c75d625fe
           port: 4222
           machines:
-          - 10.146.63.141
+          - 10.162.35.172
       ssh_proxy:
         bbs:
           api_location: bbs.service.cf.internal:8889
@@ -4456,15 +4456,15 @@ jobs:
         domain: cf.internal
         servers:
           lan:
-          - 10.146.63.131
+          - 10.162.35.171
     nats:
       user: nats
       password: fd38f77b987c75d625fe
       port: 4222
       machines:
-      - 10.146.63.141
+      - 10.162.35.172
     syslog_daemon_config:
-      address: 10.146.63.130
+      address: 10.162.35.170
       port: 514
       transport: udp
     metron_agent:
@@ -4475,7 +4475,7 @@ jobs:
     loggregator:
       etcd:
         machines:
-        - 10.146.63.134
+        - 10.162.35.174
   update:
     max_in_flight: 1
   persistent_disk_pool: diego_brain-partition
@@ -4760,15 +4760,15 @@ jobs:
         domain: cf.internal
         servers:
           lan:
-          - 10.146.63.131
+          - 10.162.35.171
     nats:
       user: nats
       password: fd38f77b987c75d625fe
       port: 4222
       machines:
-      - 10.146.63.141
+      - 10.162.35.172
     syslog_daemon_config:
-      address: 10.146.63.130
+      address: 10.162.35.170
       port: 514
       transport: udp
     metron_agent:
@@ -4779,12 +4779,12 @@ jobs:
     loggregator:
       etcd:
         machines:
-        - 10.146.63.134
+        - 10.162.35.174
     garden:
       persistent_image_list:
       - "/var/vcap/packages/rootfs_cflinuxfs2/rootfs"
       graph_cleanup_threshold_in_mb: 0
-      network_pool: 10.254.0.0/22
+      network_pool: 10.162.0.0/19
       deny_networks:
       - 0.0.0.0/0
       network_mtu: 1454
@@ -4808,7 +4808,7 @@ jobs:
     - dns
     - gateway
     static_ips:
-    - 10.146.63.178
+    - 10.162.35.187
   properties:
     doppler:
       zone: 435c4ba9eb6b98368ae3
@@ -4834,9 +4834,9 @@ jobs:
       password: fd38f77b987c75d625fe
       port: 4222
       machines:
-      - 10.146.63.141
+      - 10.162.35.172
     syslog_daemon_config:
-      address: 10.146.63.130
+      address: 10.162.35.170
       port: 514
       transport: udp
     metron_agent:
@@ -4847,7 +4847,7 @@ jobs:
     loggregator:
       etcd:
         machines:
-        - 10.146.63.134
+        - 10.162.35.174
     system_domain: pcf.vmware.com
     cc:
       bulk_api_password: d0a8cd5f35ff7e47339a
@@ -4871,12 +4871,12 @@ jobs:
     - dns
     - gateway
     static_ips:
-    - 10.146.63.179
+    - 10.162.35.192
   properties:
     loggregator:
       etcd:
         machines:
-        - 10.146.63.134
+        - 10.162.35.174
     cc:
       srv_api_uri: https://api.pcf.vmware.com
     system_domain: pcf.vmware.com
@@ -4889,9 +4889,9 @@ jobs:
       password: fd38f77b987c75d625fe
       port: 4222
       machines:
-      - 10.146.63.141
+      - 10.162.35.172
     syslog_daemon_config:
-      address: 10.146.63.130
+      address: 10.162.35.170
       port: 514
       transport: udp
     metron_agent:
@@ -4981,14 +4981,14 @@ jobs:
           href: "/tools"
     databases:
       console:
-        ip: 10.146.63.177
+        ip: 10.162.35.191
         username: root
         password: a3e97699e925d56e042c
         adapter: postgres
       app_usage_service:
         name: app_usage_service
         port: 3306
-        ip: 10.146.63.157
+        ip: 10.162.35.181
         username: app_usage
         password: a88009dfef33cacc7ea9
     ssl:
@@ -5065,7 +5065,7 @@ jobs:
         client_id: notifications
         client_secret: faf2d48af75e9c2e8bab
       database:
-        url: mysql://fa92e6d2fcfb20afd7dc:a21a4280f9f37aa7decc@10.146.63.157:3306/notifications
+        url: mysql://fa92e6d2fcfb20afd7dc:a21a4280f9f37aa7decc@10.162.35.181:3306/notifications
         max_open_connections: 10
       default_template: |
         {
@@ -5188,7 +5188,7 @@ jobs:
         admin_password: admin
       instance_count: 1
       database:
-        url: mysql://af54c1cc36e066806649:e28b0bc8d6fe5f23494a@10.146.63.157:3306/autoscale
+        url: mysql://af54c1cc36e066806649:e28b0bc8d6fe5f23494a@10.162.35.181:3306/autoscale
       encryption_key: 32c62e9ee19f2a48
       enable_diego: true
       notifications_host: https://notifications.pcf.vmware.com
@@ -5358,7 +5358,7 @@ jobs:
     - gateway
   properties:
     cluster_ips:
-    - 10.146.63.160
+    - 10.162.35.183
     database_startup_timeout: 1200
     bootstrap_endpoint:
       username: d8f38f09a3e5b4043f24
